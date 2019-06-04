@@ -49,8 +49,7 @@ class VideosController < ApplicationController
       params.require(:video).permit(:name,
                                     :tag,
                                     :url,
-                                    :created_by,
-                                    :created_at,
-                                    :updated_at)
+                                    :user_id
+                                    )
     end
 end

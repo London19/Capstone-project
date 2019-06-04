@@ -8,7 +8,7 @@ curl "http://localhost:4741/videos" \
     "name": "'"${NAME}"'",
     "tag": "'"${TAG}"'",
     "url": "'"${URL}"'",
-    "created_by" "'"${CREATE_BY}"'"
+    "user_id": "'"${USER}"'"
   }
 }'
 echo
