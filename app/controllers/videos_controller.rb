@@ -1,5 +1,5 @@
-class VideosController < ApplicationController
-  before_action :set_video, only: [:show, :update, :destroy]
+class VideosController < OpenReadController
+  before_action :set_video, only: %i[update destroy]
 
   # GET /videos
   def index
