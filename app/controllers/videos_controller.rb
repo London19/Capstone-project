@@ -1,3 +1,4 @@
+
 class VideosController < OpenReadController
   before_action :set_video, only: %i[update destroy]
 
@@ -15,10 +16,10 @@ class VideosController < OpenReadController
 
   # POST /videos
   def create
-    @video = current_user.video.build(video_params)
+    @video = current_user.videos.build(video_params)
 
     if @video.save
-      render json: @video, status: :created, location: @video
+      render json: @video, status: :created
     else
       render json: @video.errors, status: :unprocessable_entity
     end
@@ -36,12 +37,13 @@ class VideosController < OpenReadController
   # DELETE /videos/1
   def destroy
     @video.destroy
+
+    head :no_content
   end
 
-  private
     # Use callbacks to share common setup or constraints between actions.
     def set_video
-      @video = Video.find(params[:id])
+      @video = current_user.videos.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
@@ -52,4 +54,5 @@ class VideosController < OpenReadController
                                     :user_id
                                     )
     end
+    private :set_video, :video_params
 end
