@@ -15,7 +15,7 @@ class VideosController < OpenReadController
 
   # POST /videos
   def create
-    @video = Video.new(video_params)
+    @video = current_user.video.build(video_params)
 
     if @video.save
       render json: @video, status: :created, location: @video
